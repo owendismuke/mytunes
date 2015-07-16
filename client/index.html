@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+    <head>
+      <link rel="stylesheet" href="styles.css">
+    </head>
   <body>
     <!-- Scripts may be placed anywhere on a page. But FYI, they block rendering of elements
      below them until after the scripts load-->
@@ -24,7 +27,8 @@
     <script>
       $(function(){
         // set up model objects
-        var library = new Songs(songData);
+        var storedLibrary = localStorage.getItem('library');
+        var library = storedLibrary || new Songs(songData);
         var app = new AppModel({library: library});
 
         // build a view for the top level of the whole app

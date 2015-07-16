@@ -5,12 +5,18 @@ var SongQueue = Songs.extend({
     this.on( "add", this.onAdded, this);
     this.on( "ended", this.songEnded, this);
     this.on( "dequeue", this.remove, this);
+    this.on( "remove", this.onRemoved, this);
     // this.on( "enqueue", this.addSong, this);
   },
   onAdded: function(){
     if (this.length === 1){
       this.playFirst();
     }
+    this.pushToStorage();
+  },
+
+  onRemoved: function(){
+    this.pushToStorage();
   },
 
   songEnded: function(){ 
@@ -20,6 +26,9 @@ var SongQueue = Songs.extend({
       }
   },
 
+  pushToStorage: function(){  
+    localStorage.setItem('queue', JSON.stringify(this));
+  },
   // addSong: function(song){  
   //   this.add(song);
   // },
