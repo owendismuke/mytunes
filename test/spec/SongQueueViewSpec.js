@@ -35,4 +35,6 @@ describe('SongQueueView', function() {
     expect(view.render).to.have.been.called;
   });
 
+
+
 });
