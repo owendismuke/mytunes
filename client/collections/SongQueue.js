@@ -1,6 +1,5 @@
 // SongQueue.js - Defines a backbone model class for the song queue.
 var SongQueue = Songs.extend({
-
   initialize: function(){
     this.on( "add", this.onAdded, this);
     this.on( "ended", this.songEnded, this);
@@ -27,11 +26,9 @@ var SongQueue = Songs.extend({
   },
 
   pushToStorage: function(){  
-    localStorage.setItem('queue', JSON.stringify(this));
+    //Retrieving collection from localStorage is breaking links to event flow.
+    //localStorage.setItem('queue', JSON.stringify(this));
   },
-  // addSong: function(song){  
-  //   this.add(song);
-  // },
 
   playFirst: function(){
    if(this.at(0)){

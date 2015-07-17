@@ -5,9 +5,7 @@ var LibraryView = Backbone.View.extend({
 
   initialize: function() {
     this.render();
-    this.listenTo(this.collection, 'change', this.render);
-    this.listenTo(this.collection, 'add', this.render);
-    this.listenTo(this.collection, 'remove', this.render);
+    this.listenTo(this.collection, 'change add remove', this.render); //Can listen to multiple events if wanting to call the same method.
   },
 
   render: function(){
